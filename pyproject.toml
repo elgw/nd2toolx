@@ -1,0 +1,39 @@
+[project]
+name = "nd2toolx"
+version = "0.1.0"
+description = "Extra functionality on top of nd2tool"
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["nd2toolx"]
+authors = [{name = "Erik Wernersson", email = "erik.wernersson@scilifelab.se"}]
+classifiers = [
+    "Operating System :: Linux",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+             "pycairo",
+             "pandas",    
+             "tifffile",  
+             "numpy",
+             "pillow",
+             "scipy"
+             ]
+
+[project.optional-dependencies]
+test = ["pytest", "coverage"]
+
+[project.scripts]
+nd2toolx = "nd2toolx.__main__:cli"
+
+[project.urls]
+"Changelog" = "https://github.com/elgw/nd2toolx/blob/main/CHANGELOG.md"
+"Source" = "https://github.com/elgw/nd2toolx"
+"Tracker" = "https://github.com/elgw/nd2toolx/issues"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
