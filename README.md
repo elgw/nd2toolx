@@ -75,7 +75,7 @@ produce really large images. In that case the coordinates from the ND2
 file is used:
 
 <p align="center">
-<img src="doc/images/tiled_sceenshot.png" width="100%">
+<img src="doc/images/tiled_screenshot.png" width="100%">
 </p>
 
 
