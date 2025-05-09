@@ -1,6 +1,7 @@
 # nd2toolx
 
-A toolbox with extra utilites/extensions to [nd2tool](https://github.com/elgw/nd2tool/).
+A toolbox with extra utilites/extensions to
+[nd2tool](https://github.com/elgw/nd2tool/).
 
 - Generate a svg image with the layout, i.e. placements, of the FOV,
   along with the coordinate transformation to go from images
@@ -13,9 +14,12 @@ A toolbox with extra utilites/extensions to [nd2tool](https://github.com/elgw/nd
 - Generate a DZI image that can be used to publish large composite
   images on the web with OpenSeadragon.
 
+The status of this tool is pretty much experimental. It is based on a
+set of bash and MATLAB scripts and all functionality is not
+transferred to python yet. Please let me know if you find it useful or
+if what isn't working by submitting an [issue](https://github.com/elgw/nd2toolx/issues).
 
 ## Setup
-
 
 ### Dependencies
 
@@ -80,7 +84,7 @@ The script contains help sections for all commands, see that for detailed usage.
 ### Generate a layout
 
 ``` shell
-nd2toolx layout --nd2 file.nd2
+$ nd2toolx layout --nd2 file.nd2
 # creates file/layout.svg and file/layout.svg.log.txt
 ```
 
@@ -124,7 +128,7 @@ enough FOV.
 Run once to generate the configuration files:
 
 ``` shell
-nd2toolx tile --nd2 /data/iiXZ0162_20210416_001.nd2
+$ nd2toolx tile --nd2 /data/iiXZ0162_20210416_001.nd2
 Creating ./iiXZ0162_20210416_001/
 nd2 file: /data//iiXZ0162_20210416_001.nd2
 channel file: ./iiXZ0162_20210416_001/tile_channels.json
@@ -133,7 +137,7 @@ Output size: 5662 x 23294 pixels
 Please edit the generated config files and run again
 ```
 
-In this case we might edit the `tile_channels.json` to make dapi blue and A647 red:
+In this case we will edit the `tile_channels.json` to make dapi blue and A647 red:
 
 ``` json
 [
@@ -164,10 +168,11 @@ In this case we might edit the `tile_channels.json` to make dapi blue and A647 r
 ]
 ```
 
-Run again to extract the tif files and to tile the images:
+Run again to extract the tif files from the nd2 file, and to tile the
+images from each channel and to create a composite png file:
 
 ``` shell
-H nd2toolx tile --nd2 /data/iiXZ0162_20210416_001.nd2
+$ nd2toolx tile --nd2 /data/iiXZ0162_20210416_001.nd2
 nd2 file: /data/iiXZ0162_20210416_001.nd2
 imdir: ./iiXZ0162_20210416_001/
 channel file: ./iiXZ0162_20210416_001/tile_channels.json
@@ -204,5 +209,8 @@ Converting to RGB
 Writing to ./iiXZ0162_20210416_001//composite.png
 ```
 
-## TODO
- - accept a prefix like 'dw_'
+## Planned
+
+ - Use deconvolved images. In this case the user would have to
+   deconvolve the files manually and let the script know that the
+   image files to read should be prefixed, for example by 'dw_'.
