@@ -43,7 +43,15 @@ Optional:
 - Install the script with [pipx](https://github.com/pypa/pipx)
 
 ``` shell
-pipx install --force .
+pipx install .
+```
+
+You should now be able to run the script, and the output should be
+something like this:
+
+``` shell
+$ nd2toolx --version
+0.1.0
 ```
 
 ### Alternative -- use without installing

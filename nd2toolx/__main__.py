@@ -4,6 +4,7 @@
 python -m pdb -c continue ./nd2tool_extra.py --nd2 /srv/backup/FFPE_FISH/iiXZ0215_20231221_008.nd2 --out 215
 
 """
+
 import argparse
 import csv
 import glob
@@ -22,6 +23,13 @@ from tifffile import imread, imwrite
 import numpy as np
 from PIL import Image # pillow
 from scipy.ndimage import gaussian_filter
+
+import importlib.metadata
+
+try:
+    __version__ = importlib.metadata.version('nd2toolx')
+except importlib.metadata.PackageNotFoundError:
+    __version__ = "Can't determine version since the package is not installed"
 
 # Not given as a warning...
 import warnings
@@ -44,6 +52,9 @@ def parse_command_line() -> argparse.Namespace:
         description=progdesc,
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
+    parser.add_argument('--version',
+                        help='Show program version',
+                        action='version', version=__version__)
 
     subparser = parser.add_subparsers(help="Commands", dest='command')
 

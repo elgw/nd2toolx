@@ -2,7 +2,7 @@
 name = "nd2toolx"
 version = "0.1.0"
 description = "Extra functionality on top of nd2tool"
-license = {text = "MIT"}
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["nd2toolx"]
