@@ -3,18 +3,6 @@
 """For debugging, use command like
 python -m pdb -c continue ./nd2tool_extra.py --nd2 /srv/backup/FFPE_FISH/iiXZ0215_20231221_008.nd2 --out 215
 
-# Changelog
-
-20250506:
-
-- New: Creates a layout.svg.log.txt besides layout.svg with the
-coordinate conversion (pixels to microscopy)
-
-- New: Writes out the coordinate conversion formula also for tiled
-  images.
-
-Intial version 20250501, Erik Wernersson.
-
 """
 import argparse
 import csv
@@ -50,7 +38,6 @@ def parse_command_line() -> argparse.Namespace:
     image
 
     For usage, please see the help sections for the respective sub commands.
-
     """
 
     parser = argparse.ArgumentParser(
@@ -117,7 +104,7 @@ def parse_command_line() -> argparse.Namespace:
 
 def validate_tile_arguments(config):
     if not os.path.exists(config.nd2):
-        print(f"{config.nd2} does not exist", file=stderr)
+        print(f"{config.nd2} does not exist", file=sys.stderr)
         sys.exit(1)
 
     # This is all we can do at the moment since nd2tool can't place the files in any other folder
@@ -763,12 +750,22 @@ def tile(config):
 def cli():
     config = parse_command_line()
 
+    if config.command is None:
+        print(f"Please select a command", file=sys.stderr)
+        sys.exit(-1)
+
     if config.command == 'tile':
         tile(config)
+        return
     if config.command == 'layout':
         layout(config)
+        return
     if config.command == 'dzi':
         gen_dzi(config)
+        return
+
+    print(f"Please select a valid command")
+    sys.exit(-1)
 
 if __name__ == '__main__':
     cli()

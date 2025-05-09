@@ -55,12 +55,21 @@ pipx install --force .
 
 The script contains help sections for all commands, see that for detailed usage.
 
-Generate a layout:
+## Generate a layout:
 
 ``` shell
 nd2toolx layout --nd2 file.nd2
 # creates file/layout.svg and file/layout.svg.log.txt
 ```
+
+The layout does of course depend on the image but could look like this:
+
+<p align="center">
+<img src="doc/images/iiXZ0852_20240426_A.nd2.layout.svg" width="100%">
+</p>
+
+## Tile images
+
 
 ## TODO
  - accept a prefix like 'dw_'
