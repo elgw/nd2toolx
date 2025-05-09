@@ -70,6 +70,14 @@ The layout does of course depend on the image but could look like this:
 
 ## Tile images
 
+Images, or FOV, from an ND2 images can be put together (tiled) to
+produce really large images. In that case the coordinates from the ND2
+file is used:
+
+<p align="center">
+<img src="doc/images/tiled_sceenshot.png" width="100%">
+</p>
+
 
 ## TODO
  - accept a prefix like 'dw_'
